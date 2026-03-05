@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Controle Overlay</title>
+</head>
+
+<body style="font-family:Arial">
+
+<h2>Controle de Overlay</h2>
+
+<label>Linha Superior</label>
+<br>
+<input id="top" value="E A VIDA CONTINUA" style="width:300px">
+
+<br><br>
+
+<label>Linha Inferior</label>
+<br>
+<input id="bottom" value="SANDRA BERTO" style="width:300px">
+
+<br><br>
+
+<button onclick="send()">Enviar para Live</button>
+
+<script>
+
+function send(){
+
+localStorage.setItem("top",document.getElementById("top").value)
+localStorage.setItem("bottom",document.getElementById("bottom").value)
+
+alert("Overlay atualizado")
+
+}
+
+</script>
+
+</body>
+</html>
