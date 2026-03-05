@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+
+body{
+margin:0;
+background:transparent;
+font-family:Arial;
+}
+
+#overlay{
+position:absolute;
+bottom:80px;
+left:60px;
+display:flex;
+align-items:flex-start;
+opacity:0;
+}
+
+.bar{
+width:10px;
+height:90px;
+background:#1d4ed8;
+margin-right:15px;
+}
+
+.text{
+display:flex;
+flex-direction:column;
+}
+
+.top{
+font-size:36px;
+font-weight:bold;
+color:#1d4ed8;
+margin-bottom:10px;
+}
+
+.bottomBox{
+background:#1d4ed8;
+padding:12px 20px;
+display:inline-block;
+}
+
+.bottomBox span{
+color:white;
+font-size:26px;
+font-weight:bold;
+}
+
+.show{
+animation:slidein 1s forwards;
+}
+
+.hide{
+animation:slideout 1s forwards;
+}
+
+@keyframes slidein{
+from{transform:translateX(-200px);opacity:0}
+to{transform:translateX(0);opacity:1}
+}
+
+@keyframes slideout{
+from{transform:translateX(0);opacity:1}
+to{transform:translateX(-200px);opacity:0}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="overlay">
+
+<div class="bar"></div>
+
+<div class="text">
+
+<div id="top" class="top"></div>
+
+<div class="bottomBox">
+<span id="bottom"></span>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const overlay=document.getElementById("overlay")
+
+function update(){
+
+document.getElementById("top").innerText=localStorage.getItem("top")||"E A VIDA CONTINUA"
+document.getElementById("bottom").innerText=localStorage.getItem("bottom")||"SANDRA BERTO"
+
+}
+
+update()
+
+function loop(){
+
+overlay.classList.remove("hide")
+overlay.classList.add("show")
+
+setTimeout(()=>{
+
+overlay.classList.remove("show")
+overlay.classList.add("hide")
+
+},10000)
+
+setTimeout(loop,15000)
+
+}
+
+loop()
+
+</script>
+
+</body>
+</html>
